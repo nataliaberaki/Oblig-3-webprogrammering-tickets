@@ -2,9 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Kinobilletter</title>
+    <script src="main.js"></script>
 </head>
 <body>
+<h1>Buy tickets here</h1>
+<label>Choose Movie</label>
+<select id="movies">
+    <option value="">Choose a movie</option>
+    <option value="Cars">Cars</option>
+    <option value="Shrek">Shrek</option>
+    <option value="Toy Story">Toy Story</option>
+    <option value="Finding Nemo">Finding Nemo</option>
+</select>
 
+<br>
+<br>
+
+<label for="ticketAmount">Amount of Tickets</label>
+<input id="ticketAmount" type="number" min="1" required>
+<span id="ticketAmountError" class="error"></span>
+
+<br>
+<br>
+<label for="firstname">Firstname</label>
+<input id="firstname" type="text" pattern="[a-zA-Z]+" required>
+<span id="firstnameError" class="error"></span>
+
+<br>
+<br>
+<label for="lastname">Lastname</label>
+<input id="lastname" type="text" pattern="[a-zA-Z]+" required>
+<span id="lastnameError" class="Error"></span>
+
+<br>
+<br>
+<label for="phonenumber">Telefon</label>
+<input id="phonenumber" type="tel" pattern="[0-9]{8}" required>
+<span id="phonenumberError" class="error"></span>
+
+<br>
+<br>
+<label for="mail">Mail</label>
+<input id="mail" type="mail" required>
+<span id="mailError" class="error"></span>
+
+<br>
+<br>
+<button onclick="buyTickets()">Buy tickets</button>
+
+
+<h2>All tickets</h2>
+<div id="boughtTickets"></div>
+<br>
+<button onclick="deleteTickets()">Delete all tickets</button>
 </body>
 </html>
