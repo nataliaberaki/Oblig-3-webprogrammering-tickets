@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class ticketsController {
 
@@ -12,12 +14,12 @@ public class ticketsController {
     private ticketRepo rep;
 
     @PostMapping("/save")
-    public void saveTicket(Ticket ticket){
+    public void saveTicket(tickets ticket){
         rep.saveTickets(ticket);
     }
 
     @GetMapping("/showAllTickets")
-    public List<Ticket> showTicket(){
+    public List<tickets> showTicket(){
         return rep.getAllTickets();
     }
 

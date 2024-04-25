@@ -2,30 +2,30 @@ package com.example.oblig3cinematickets;
 
 public class tickets {
 
-    private int id;
+    private Integer id;
     private String firstname;
     private String lastname;
     private String phonenumber;
     private String mail;
     private String movie;
-    private String amount;
+    private Integer amount;
 
-    public tickets(int id, String firstname, String lastname, String phonenumber, String mail, String movie, String amount){
+
+
+    public tickets(Integer id, String firstname, String lastname, String phonenumber, String mail, String movie, Integer amount){
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
-        this. phonenumber = phonenumber;
+        this.phonenumber = phonenumber;
         this.mail = mail;
         this.movie = movie;
         this.amount = amount;
     }
 
-    public tickets(){}
-        public void setId(int id){
-            this.id = id;
+    public void setId(Integer id){
+        this.id = id;
     }
-
-    public int getId() {
+    public Integer getId(){
         return id;
     }
 
@@ -36,6 +36,7 @@ public class tickets {
     public String getFirstname(){
         return firstname;
     }
+
     public void setLastname(String lastname){
         this.lastname = lastname;
     }
@@ -66,11 +67,11 @@ public class tickets {
     public String getMovie(){
         return movie;
     }
-    public void setAmount(String amount){
+    public void setAmount(Integer amount){
         this.amount = amount;
     }
 
-    public String getAmount(){
+    public Integer getAmount(){
         return amount;
     }
 }
