@@ -1,4 +1,4 @@
-const tickets = {};
+const tickets = [];
 function buyTickets() {
     let movies = document.getElementById("movies").value;
     let ticketAmount = document.getElementById("ticketAmount").value;
