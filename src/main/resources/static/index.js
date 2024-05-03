@@ -1,16 +1,52 @@
-let tickets = [];
-
-
+const tickets = {};
 function buyTickets() {
-    let buyTickets = document.getElementById("movies").value;
+    let movies = document.getElementById("movies").value;
     let ticketAmount = document.getElementById("ticketAmount").value;
     let firstname = document.getElementById("firstname").value;
     let lastname = document.getElementById("lastname").value;
     let phonenumber = document.getElementById("phonenumber").value;
     let mail = document.getElementById("mail").value;
 
-    const ticket1 = {
-        movies: buyTickets,
+    let isValid = true;
+
+    if (ticketAmount.trim() === "" || !Number(ticketAmount)) {
+        document.getElementById("ticketAmountError").textContent = "Write in the amount";
+        document.getElementById("ticketAmountError").style.color = "red";
+        isValid = false;
+    }
+
+    if (firstname.trim() === "" || /\d/.test(firstname)) {
+        document.getElementById("firstnameError").textContent = "Write in your firstname";
+        document.getElementById("firstnameError").style.color = "red";
+        isValid = false;
+    }
+
+    if (lastname.trim() === "" || /\d/.test(lastname)) {
+        document.getElementById("lastnameError").textContent = "Write in your lastname";
+        document.getElementById("lastnameError").style.color = "red";
+        isValid = false;
+    }
+
+    if (phonenumber.trim() === "" || !Number(phonenumber) || phonenumber.length !== 8) {
+        document.getElementById("phonenumberError").textContent = "Write your telephone number";
+        document.getElementById("phonenumberError").style.color = "red";
+        isValid = false;
+    }
+
+    if (mail.trim() === "" || !mail.includes("@") || !mail.includes(".")) {
+        document.getElementById("mailError").textContent = "Write your mail";
+        document.getElementById("mailError").style.color = "red";
+        isValid = false;
+    }
+
+    if (!isValid) {
+        alert("Please correct the highlighted errors before submitting.");
+        return; // Stop function execution if there are validation errors
+    }
+
+    // If validation passed, create the ticket object and add to the array
+    const ticket = {
+        movies: movies,
         ticketAmount: ticketAmount,
         firstname: firstname,
         lastname: lastname,
@@ -18,9 +54,13 @@ function buyTickets() {
         mail: mail
     };
 
-    tickets.push(ticket1);
-    out();
+    tickets.push(ticket);
 
+    console.log("Ticket added:", ticket);
+    out();
+    console.log("Ticket Displayed:");
+
+    // Clear input fields after successful submission
     document.getElementById("movies").value = "";
     document.getElementById("ticketAmount").value = "";
     document.getElementById("firstname").value = "";
@@ -28,59 +68,17 @@ function buyTickets() {
     document.getElementById("phonenumber").value = "";
     document.getElementById("mail").value = "";
 
-
+    // Clear error messages
     document.getElementById("ticketAmountError").textContent = "";
     document.getElementById("firstnameError").textContent = "";
     document.getElementById("lastnameError").textContent = "";
     document.getElementById("phonenumberError").textContent = "";
     document.getElementById("mailError").textContent = "";
-
-    let isValid = true;
-
-
-    if (ticketAmount.trim() === "" || !Number(ticketAmount))  {
-        document.getElementById("ticketAmountError").textContent = "write inn the amount";
-        document.getElementById("ticketAmountError").style.color = "red";
-        isValid = false;
-    }
-
-    if (firstname.trim() === "" || /\d/.test(firstname))  {
-        document.getElementById("firstnameError").textContent = "write inn your firstname";
-        document.getElementById("firstnameError").style.color = "red";
-        isValid = false;
-    }
-
-
-    if (lastname.trim() === "" || /\d/.test(lastname)) {
-        document.getElementById("lastnameError").textContent = "write inn your lastname";
-        document.getElementById("lastnameError").style.color = "red";
-        isValid = false;
-    }
-
-
-    if (phonenumber.trim() === "" || !Number(phonenumber) || phonenumber.length !==8) {
-        document.getElementById("phonenumberError").textContent = "Write your telephone number";
-        document.getElementById("phonenumberError").style.color = "red";
-        isValid = false;
-    }
-
-
-    if (mail.trim() === "" || !mail.includes("@") || !mail.includes(".")) {
-        document.getElementById("mailError").textContent = "write your mail";
-        document.getElementById("mailError").style.color = "red";
-        isValid = false;
-    }
-
-    if (!isValid) {
-
-        return;
-    }
-
 }
-
-function out(){
-    let printOut = "<table><tr><th>Movie</th><th>Amount of tickets</th><th>Firstname</th><th>lastname</th><th>Phone Number</th><th>Mail</th></tr>";
-    for(let i = 0; i < tickets.length; i++){
+function out() {
+    console.log("Rendering tickets...");
+    let printOut = "<table><tr><th>Movie</th><th>Amount of Tickets</th><th>Firstname</th><th>Lastname</th><th>Phone Number</th><th>Mail</th></tr>";
+    for (let i = 0; i < tickets.length; i++) {
         printOut += "<tr>";
         printOut += "<td>" + tickets[i].movies + "</td>";
         printOut += "<td>" + tickets[i].ticketAmount + "</td>";
@@ -90,15 +88,6 @@ function out(){
         printOut += "<td>" + tickets[i].mail + "</td>";
         printOut += "</tr>";
     }
-
     printOut += "</table>";
     document.getElementById("boughtTickets").innerHTML = printOut;
-
 }
-
-function deleteTickets(){
-    tickets = [];
-    console.log(tickets);
-    out();
-}
-
