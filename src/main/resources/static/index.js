@@ -95,4 +95,4 @@ function out() {
 function deleteAllTickets(){
         tickets = [];
        console.log(tickets);
-         }    
+}
