@@ -1,4 +1,4 @@
-const tickets = [];
+let tickets = [];
 function buyTickets() {
     let movies = document.getElementById("movies").value;
     let ticketAmount = document.getElementById("ticketAmount").value;
@@ -91,3 +91,8 @@ function out() {
     printOut += "</table>";
     document.getElementById("boughtTickets").innerHTML = printOut;
 }
+
+function deleteAllTickets(){
+        tickets = [];
+       console.log(tickets);
+         }    
