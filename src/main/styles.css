@@ -1,0 +1,74 @@
+/* Centering the entire main content */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Aligns children (forms, sections) vertically */
+    min-height: 100vh; /* Uses minimum screen height to center vertically */
+}
+
+/* Styling for the ticket summary table */
+#boughtTickets {
+    width: 90%; /* Adjusts the width of the table to the parent */
+    max-width: 800px; /* Maximum width of the table */
+    margin: 20px auto; /* Centers horizontally and adds vertical spacing */
+    overflow-x: auto; /* Ensures table is scrollable on small screens */
+}
+
+table {
+    width: 100%; /* Ensures table uses the full width of its container */
+    border-collapse: collapse; /* Merges table borders */
+    margin-top: 20px; /* Space above the table */
+}
+
+th, td {
+    border: 1px solid #ccc; /* Light grey border for readability */
+    padding: 10px;
+    text-align: center; /* Centers text in cells */
+}
+
+th {
+    background-color: #007bff; /* Bootstrap primary blue */
+    color: white;
+}
+
+/* Responsive adjustments for table */
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr { border: 1px solid #ccc; }
+
+    td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td:before {
+        /* Using CSS to create labels for the data cells on small screens */
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    /* Labeling data cells according to header */
+    td:nth-of-type(1):before { content: "Movie"; }
+    td:nth-of-type(2):before { content: "Amount of Tickets"; }
+    td:nth-of-type(3):before { content: "Firstname"; }
+    td:nth-of-type(4):before { content: "Lastname"; }
+    td:nth-of-type(5):before { content: "Phone Number"; }
+    td:nth-of-type(6):before { content: "Email"; }
+}
+
